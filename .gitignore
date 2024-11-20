@@ -1,0 +1,24 @@
+﻿# Visual Studio files
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+*.cache
+*.pdb
+
+# Build outputs
+bin/
+obj/
+debug/
+release/
+
+# Dependency directories
+node_modules/
+wwwroot/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
