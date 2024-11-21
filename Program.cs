@@ -67,6 +67,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseStaticFiles(); // Serve React build files
+    app.MapFallbackToFile("index.html");
+}
 // Enable HTTPS redirection to ensure the app uses HTTPS in all environments
 app.UseHttpsRedirection();
 
@@ -75,5 +80,6 @@ app.UseAuthorization();
 
 // Map controllers for API endpoints (ensure all controllers are routed correctly)
 app.MapControllers();
+
 
 app.Run();
