@@ -4,10 +4,25 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
+    <!-- Enable serving static files -->
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
+
+  <!-- Target to build the React app and copy it to wwwroot -->
+  <Target Name="PublishReact" AfterTargets="ComputeFilesToPublish">
+    <!-- Ensure npm is installed and build React app -->
+    <Exec Command="npm install" WorkingDirectory="clientapp" />
+    <Exec Command="npm run build" WorkingDirectory="clientapp" />
+
+    <!-- Copy React build output to wwwroot -->
+    <ItemGroup>
+      <_ReactBuild Include="clientapp/build/**" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_ReactBuild)" DestinationFolder="$(PublishDir)wwwroot" />
+  </Target>
 
 </Project>
