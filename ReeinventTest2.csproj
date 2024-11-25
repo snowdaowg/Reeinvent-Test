@@ -9,7 +9,46 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\favicon.ico" />
+    <Content Remove="wwwroot\index.html" />
+    <Content Remove="wwwroot\logo192.png" />
+    <Content Remove="wwwroot\logo512.png" />
+    <Content Remove="wwwroot\robots.txt" />
+    <Content Remove="wwwroot\static\css\main.e6c13ad2.css" />
+    <Content Remove="wwwroot\static\css\main.e6c13ad2.css.map" />
+    <Content Remove="wwwroot\static\js\453.c42b233b.chunk.js" />
+    <Content Remove="wwwroot\static\js\453.c42b233b.chunk.js.map" />
+    <Content Remove="wwwroot\static\js\main.4f1e69a5.js" />
+    <Content Remove="wwwroot\static\js\main.4f1e69a5.js.LICENSE.txt" />
+    <Content Remove="wwwroot\static\js\main.4f1e69a5.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\asset-manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\logo192.png" />
+    <None Include="wwwroot\logo512.png" />
+    <None Include="wwwroot\robots.txt" />
+    <None Include="wwwroot\static\css\main.e6c13ad2.css" />
+    <None Include="wwwroot\static\css\main.e6c13ad2.css.map" />
+    <None Include="wwwroot\static\js\453.c42b233b.chunk.js" />
+    <None Include="wwwroot\static\js\453.c42b233b.chunk.js.map" />
+    <None Include="wwwroot\static\js\main.4f1e69a5.js" />
+    <None Include="wwwroot\static\js\main.4f1e69a5.js.LICENSE.txt" />
+    <None Include="wwwroot\static\js\main.4f1e69a5.js.map" />
   </ItemGroup>
 
   <!-- Target to build the React app and copy it to wwwroot -->

@@ -27,7 +27,8 @@ builder.Services.AddCors(options =>
         }
         else
         {
-            policy.WithOrigins("http://localhost:3000") // Local dev front-end URL
+            // Fallback CORS configuration for local development
+            policy.WithOrigins("http://localhost:3000", "https://reeinventtest220241121170034.azurewebsites.net")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials();
@@ -41,6 +42,13 @@ builder.Services.AddSingleton<ISynonymRepository, SynonymRepository>();
 // Add Swagger for API documentation (useful for development)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configure API base URL for environment (for API calls from React frontend)
+var apiBaseUrl = builder.Environment.IsDevelopment()
+    ? "https://localhost:5001" // Local development API URL
+    : "https://reeinventtest220241121170034.azurewebsites.net"; // Production API URL
+
+builder.Services.AddSingleton(new ApiSettings { BaseUrl = apiBaseUrl });
 
 var app = builder.Build();
 
